@@ -20,7 +20,7 @@ const Expense = Sequelize.define('Expenses', {
         allowNull: false,
         type: sequelize.DATE,
     },
-    Category: {
+    category_id: {
         allowNull: false,
         type: sequelize.INTEGER,
         references: {

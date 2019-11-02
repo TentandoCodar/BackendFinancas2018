@@ -1,0 +1,4 @@
+Criar o banco de dados CMS;
+Instalar as dependencias
+Executar o comando npx sequelize db:migrate;
+Executar o comando yarn dev;

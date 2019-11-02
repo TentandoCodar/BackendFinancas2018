@@ -24,7 +24,8 @@ module.exports = {
         const randomToken = crypto.randomBytes(32).toString('hex');
 
         const user = await User.findAll({where:{email},raw:true});
-        if(user) {
+        
+        if(user != '') {
             const passwordDB = user[0].password;
             bcrypt.compare(password, passwordDB, function(err,resp) {
                 if(err) {
@@ -40,8 +41,15 @@ module.exports = {
                 }
             })
         }
+        else {
+            return res.sendStatus(400);
+        }
 
         
     },
+    async destroyToken(req,res) {
+        User.update({token: null}, {where: {token: req.body.token}});
+        return res.sendStatus(200);
+    }
     
 }
